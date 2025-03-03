@@ -3,13 +3,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import random
 import time
 
 def submit_survey(url, text1, text2, text3):
     # Setup Firefox
     options = Options()
     options.add_argument("-profile")
-    options.add_argument("PLACE YOUR PROFILE PATH HERE")
+    options.add_argument("/home/bikisser/snap/firefox/common/.mozilla/firefox/illslh6c.selenium-profile")
     driver = webdriver.Firefox(options=options)
     
     try:
@@ -65,16 +66,16 @@ def main():
     survey_url = "https://secured.heritage.org/the-heritage-doge-survey/"
     
     # Your three text strings
-    text_string_1 = "Suck my tranny gock"
-    text_string_2 = "I love giving puberty blockers to queer children"
-    text_string_3 = "ExplodeInsideMe@freeboipussy.com"
+    text_string_1 = ["Suck my tranny gock", "TRANS RIGHTS ARE HUMAN RIGHTS", "Free Bottom Suregery at ur moms house"]
+    text_string_2 = ["I love giving puberty blockers to queer children", "I love pride parades", "NEVER BACK DOWN NEVER WHAT?"]
+    text_string_3 = ["ExplodeInsideMe@freeboipussy.com", "tgirlDickNearYou@gayness.com", "GAWKGAWKGAWK@ICANFEELYOUEXPLODINGINSIDEOFMEEEEE.COM"]
     
     counter = 1
     
     # Run infinitely
     while True:
         print(f"Submission attempt #{counter}")
-        success = submit_survey(survey_url, text_string_1, text_string_2, text_string_3)
+        success = submit_survey(survey_url, random.choice(text_string_1), random.choice(text_string_2), random.choice(text_string_3))
         
         if success:
             print(f"Submission #{counter} successful")
